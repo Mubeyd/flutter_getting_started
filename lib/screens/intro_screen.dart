@@ -12,7 +12,7 @@ class IntroScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/beach.jbg'), fit: BoxFit.cover)),
+                image: AssetImage('assets/beach.jpg'), fit: BoxFit.cover)),
       ),
     );
   }
