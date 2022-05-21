@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:get_started/shared/menu_drawer.dart';
+
+import '../shared/menu_bottom.dart';
+import '../shared/menu_drawer.dart';
 
 class BmiScreen extends StatefulWidget {
   const BmiScreen({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class BmiScreen extends StatefulWidget {
 }
 
 class _BmiScreenState extends State<BmiScreen> {
-  final double fontSize = 28;
+  final double fontSize = 18;
   final TextEditingController txtHeight = TextEditingController();
   final TextEditingController txtWeight = TextEditingController();
   String result = '';
@@ -26,13 +28,14 @@ class _BmiScreenState extends State<BmiScreen> {
   @override
   void initState() {
     log('data: 111111111111111111111');
+    log('data:$isMetric  $isImperial 111111111111111111111');
     isSelected = [isMetric, isImperial];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    log('data: 111111111111111111111');
+    log('data: 222222222222222222222');
 
     heightMessage =
         'Please insert your height in ' + ((isMetric) ? 'meters' : 'inches');
@@ -44,7 +47,7 @@ class _BmiScreenState extends State<BmiScreen> {
         title: const Text('Bmi Calculator'),
       ),
       drawer: const MenuDrawer(),
-      bottomNavigationBar: const BottomMenu(), // todo: to be implemented later.
+      bottomNavigationBar: const MenuBottom(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -96,16 +99,37 @@ class _BmiScreenState extends State<BmiScreen> {
     );
   }
 
-  void toggleMeasure(int index) {}
+  void toggleMeasure(value) {
+    if (value == 0) {
+      isMetric = true;
+      isImperial = false;
+    } else {
+      isMetric = false;
+      isImperial = true;
+    }
 
-  void findBmi() {}
-}
+    setState(() {
+      isSelected = [isMetric, isImperial];
+      // txtHeight.text = '';
+      // txtWeight.text = '';
+    });
+  }
 
-class BottomMenu extends StatelessWidget {
-  const BottomMenu({Key? key}) : super(key: key);
+  void findBmi() {
+    //pounds * 703 / inches * inches
+    //kg / m2
+    double bmi = 0;
+    double height = double.tryParse(txtHeight.text) ?? 0;
+    double weight = double.tryParse(txtWeight.text) ?? 0;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+    if (isMetric) {
+      bmi = weight / (height * height);
+    } else {
+      bmi = (weight * 703) / (height * height);
+    }
+
+    setState(() {
+      result = 'Your BMI is ' + bmi.toStringAsFixed(2);
+    });
   }
 }

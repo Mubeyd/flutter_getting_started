@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../shared/menu_bottom.dart';
 import '../shared/menu_drawer.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -11,6 +13,7 @@ class IntroScreen extends StatelessWidget {
         title: const Text('Globe Fitness'),
       ),
       drawer: const MenuDrawer(),
+      bottomNavigationBar: const MenuBottom(),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
