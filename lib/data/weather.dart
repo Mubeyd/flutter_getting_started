@@ -11,7 +11,7 @@ class Weather {
 
   Weather.fromJson(Map<String, dynamic> weatherMap) {
     name = weatherMap['name'] ?? '';
-    temperature = (weatherMap['main']['name'] - 273.15) ?? 0;
+    temperature = (weatherMap['main']['temp'] - 273.15) ?? 0;
     perceived = (weatherMap['main']['feels_like'] - 273.15) ?? 0;
     pressure = weatherMap['main']['pressure'] ?? 0;
     humidity = weatherMap['main']['humidity'] ?? 0;
