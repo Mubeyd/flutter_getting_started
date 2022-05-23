@@ -9,6 +9,11 @@
 .history
 .svn/
 
+# env
+*.env
+*.env.development
+*.env.production
+
 # IntelliJ related
 *.iml
 *.ipr
