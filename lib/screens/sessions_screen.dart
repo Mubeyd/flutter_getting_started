@@ -14,9 +14,13 @@ class _SessionsScreenState extends State<SessionsScreen> {
   final TextEditingController txtDuration = TextEditingController();
   final SPHelper helper = SPHelper();
 
+  List<Session> sessions = [];
+
   @override
   void initState() {
-    helper.init();
+    helper.init().then((value) {
+      updateScreen();
+    });
     super.initState();
   }
 
@@ -26,7 +30,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
       appBar: AppBar(
         title: const Text('Your Training Sessions'),
       ),
-      body: Container(),
+      body: ListView(children: getContent()),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
@@ -52,6 +56,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                   TextField(
                     controller: txtDuration,
                     decoration: const InputDecoration(hintText: 'Duration'),
+                    keyboardType: TextInputType.number,
                   ),
                 ],
               ),
@@ -77,15 +82,36 @@ class _SessionsScreenState extends State<SessionsScreen> {
   Future saveSession() async {
     DateTime now = DateTime.now();
     String today = '${now.year}-${now.month}-${now.day}';
+    int id = helper.getCounter() + 1;
 
     Session newSession = Session(
-        1, today, txtDescription.text, int.tryParse(txtDuration.text) ?? 0);
+        id, today, txtDescription.text, int.tryParse(txtDuration.text) ?? 0);
 
-    helper.writeSession(newSession);
+    helper.writeSession(newSession).then((_) {
+      updateScreen();
+      helper.setCounter();
+    });
 
     txtDescription.text = '';
     txtDuration.text = '';
 
     Navigator.pop(context);
+  }
+
+  List<Widget> getContent() {
+    List<Widget> tiles = [];
+
+    for (var session in sessions) {
+      tiles.add(ListTile(
+        title: Text(session.description),
+        subtitle: Text('${session.date} - duration: ${session.duration} min'),
+      ));
+    }
+    return tiles;
+  }
+
+  void updateScreen() {
+    sessions = helper.getSessions();
+    setState(() {});
   }
 }
