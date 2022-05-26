@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_started/screens/bmi_screen.dart';
 import 'package:get_started/screens/intro_screen.dart';
+import 'package:get_started/screens/sessions_screen.dart';
 import 'package:get_started/screens/weather_screen.dart';
 
 class MenuDrawer extends StatelessWidget {
@@ -19,8 +20,8 @@ class MenuDrawer extends StatelessWidget {
     final List<String> menuTitles = [
       'Home',
       'BMI Calculator',
+      'Weather',
       'Training',
-      'Weather'
     ];
 
     List<Widget> menuItems = [];
@@ -49,6 +50,9 @@ class MenuDrawer extends StatelessWidget {
               break;
             case 'Weather':
               screen = const WeatherScreen();
+              break;
+            case 'Training':
+              screen = const SessionsScreen();
               break;
           }
           Navigator.of(context).pop();
