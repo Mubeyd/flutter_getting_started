@@ -5,6 +5,8 @@ import 'package:get_started/screens/intro_screen.dart';
 import 'package:get_started/screens/sessions_screen.dart';
 import 'package:get_started/screens/weather_screen.dart';
 
+import '../screens/container_screen.dart';
+
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({Key? key}) : super(key: key);
 
@@ -24,6 +26,7 @@ class MenuDrawer extends StatelessWidget {
       'Weather',
       'Training',
       'Hello Fluter Layout',
+      'Container Screen',
     ];
 
     List<Widget> menuItems = [];
@@ -58,6 +61,9 @@ class MenuDrawer extends StatelessWidget {
               break;
             case 'Hello Fluter Layout':
               screen = const HelloFlutterLayout();
+              break;
+            case 'Container Screen':
+              screen = const ContainerScreen();
               break;
           }
           Navigator.of(context).pop();
