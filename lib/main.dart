@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get_started/screens/area_calculator.dart';
 import 'package:get_started/screens/bmi_screen.dart';
+import 'package:get_started/screens/create_squares_screen.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env.development');
@@ -23,7 +23,7 @@ class GlobeApp extends StatelessWidget {
         //     bodyText2: TextStyle(fontSize: 24, fontStyle: FontStyle.italic))
       ),
       routes: {
-        '/': ((context) => const AreaCalculator()),
+        '/': ((context) => const CreateSquaresScreen()),
         '/bmi': ((context) => const BmiScreen())
       },
       initialRoute: '/',
