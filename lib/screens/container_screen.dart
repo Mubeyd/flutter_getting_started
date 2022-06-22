@@ -18,21 +18,25 @@ class ContainerScreen extends StatelessWidget {
         height: 200,
         decoration: const BoxDecoration(
           color: Colors.orange,
-          gradient: RadialGradient(
-            tileMode: TileMode.mirror,
-            radius: 0.25,
-            center: Alignment(0, 0.4),
-            colors: <Color>[
-              Color(0xff1f005c),
-              Color(0xff5b0060),
-              Color(0xff870160),
-              Color(0xffac255e),
-              Color(0xffca485c),
-              Color(0xffe16b5c),
-              Color(0xfff39060),
-              Color(0xffffb56b),
-            ],
-          ),
+          gradient: LinearGradient(colors: <Color>[Colors.white, Colors.pink]),
+          image: DecorationImage(
+              image: NetworkImage(
+                  'https://cdn.pixabay.com/photo/2016/04/01/08/55/bone-1299051_960_720.png')),
+          // gradient: RadialGradient(
+          //   tileMode: TileMode.mirror,
+          //   radius: 0.25,
+          //   center: Alignment(0, 0.4),
+          //   colors: <Color>[
+          //     Color(0xff1f005c),
+          //     Color(0xff5b0060),
+          //     Color(0xff870160),
+          //     Color(0xffac255e),
+          //     Color(0xffca485c),
+          //     Color(0xffe16b5c),
+          //     Color(0xfff39060),
+          //     Color(0xffffb56b),
+          //   ],
+          // ),
           // gradient: LinearGradient(
           //   end: Alignment.topCenter,
           //   begin: Alignment.bottomCenter,
