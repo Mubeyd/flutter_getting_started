@@ -5,6 +5,7 @@ import 'package:get_started/screens/intro_screen.dart';
 import 'package:get_started/screens/sessions_screen.dart';
 import 'package:get_started/screens/weather_screen.dart';
 
+import '../screens/area_calculator.dart';
 import '../screens/container_screen.dart';
 
 class MenuDrawer extends StatelessWidget {
@@ -27,6 +28,7 @@ class MenuDrawer extends StatelessWidget {
       'Training',
       'Hello Fluter Layout',
       'Container Screen',
+      'Area Calculator',
     ];
 
     List<Widget> menuItems = [];
@@ -65,9 +67,13 @@ class MenuDrawer extends StatelessWidget {
             case 'Container Screen':
               screen = const ContainerScreen();
               break;
+            case 'Area Calculator':
+              screen = const AreaCalculator();
+              break;
           }
           Navigator.of(context).pop();
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => screen));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => screen));
         },
       ));
     }
