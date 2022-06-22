@@ -15,7 +15,6 @@ class HelloFlutterLayout extends StatelessWidget {
       body: const Center(
         child: Text(
           'Hello flutter layout',
-          style: TextStyle(fontSize: 24),
         ),
       ),
       floatingActionButton: const FloatingActionButton(

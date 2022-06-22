@@ -15,8 +15,12 @@ class GlobeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
+          colorScheme:
+              const ColorScheme.light(primary: Color(0xff00796B)).copyWith(
+            secondary: const Color(0xff7C4DFF),
+          ),
+          textTheme: const TextTheme(bodyText2: TextStyle(fontSize: 24, fontStyle: FontStyle.italic))
+        ),
       routes: {
         '/': ((context) => const IntroScreen()),
         '/bmi': ((context) => const BmiScreen())
