@@ -28,6 +28,7 @@ class GlobeApp extends StatelessWidget {
       },
       initialRoute: '/',
       title: 'Generic App',
+      debugShowCheckedModeBanner: false,
     );
   }
 }

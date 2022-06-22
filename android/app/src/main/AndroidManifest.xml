@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.get_started">
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
    <application
         android:label="get_started"
         android:name="${applicationName}"

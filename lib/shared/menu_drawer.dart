@@ -8,6 +8,7 @@ import 'package:get_started/screens/weather_screen.dart';
 import '../screens/area_calculator.dart';
 import '../screens/container_screen.dart';
 import '../screens/create_squares_screen.dart';
+import '../screens/productivity_timer/productivity_timer_screen.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({Key? key}) : super(key: key);
@@ -31,6 +32,7 @@ class MenuDrawer extends StatelessWidget {
       'Container Screen',
       'Area Calculator',
       'Create Squares',
+      'Productivity Timer',
     ];
 
     List<Widget> menuItems = [];
@@ -74,6 +76,9 @@ class MenuDrawer extends StatelessWidget {
               break;
             case 'Create Squares':
               screen = const CreateSquaresScreen();
+              break;
+            case 'Productivity Timer':
+              screen = const ProductivityTimerScreen();
               break;
           }
           Navigator.of(context).pop();
